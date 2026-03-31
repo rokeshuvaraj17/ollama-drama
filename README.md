@@ -103,6 +103,18 @@ If you get stuck:
 
 ---
 
+## 📽 Presentation Slides
+
+The slides used for this workshop are available [here](https://docs.google.com/presentation/d/e/2PACX-1vSI1N_ZOv6SSDNG562EkNI9bpM8_RbkiaglMs6NRtsTXWW95nbPlGvhRwEt3CiDOv-xOYfF5HV2A-a6/pub?start=true&loop=true&delayms=5000).
+
+---
+
+## 📖 Study Plan
+
+A detailed study plan covering all the concepts from this workshop is available in [studyplan.md](studyplan.md).
+
+---
+
 ## 🤘 Bonus Challenges
 
 We'll add extra challenges if you complete the first one early, including:
