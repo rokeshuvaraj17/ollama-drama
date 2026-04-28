@@ -1,9 +1,13 @@
+summary
+
 Summary of provided feedback on the implemented CS5704 study chatbot
 Based on the interaction logs, the chatbot performed well on core CS5704 software testing topics and generally followed the expected study format (Definition, Example, Key Insight, Quiz Question). For prompts like “what is software testing?”, “Why can testing not prove that software is correct?”, and “What is the difference between black-box and white-box testing?”, the responses were clear, structured, and aligned with lecture-level concepts. The chatbot also handled scope boundaries correctly by rejecting an out-of-topic prompt (“how to train a neural network”) and indicating it was not covered in lecture material. Overall, the feedback suggests the chatbot is effective for exam review, especially for foundational concepts and quick self-quizzing.
 
 Areas for improvement include occasional generic phrasing, repetitive examples, and inconsistent format numbering across some responses. A few answers were conceptually correct but could be better grounded in exact lecture terminology. This indicates that while the chatbot is useful and functional, it can be improved through tighter context selection and more consistent output rules.
 
-Individual reflection: performance, challenges, and key takeaways
+Individual reflection: 
+
+performance, challenges, and key takeaways
 From my perspective, this activity showed that the chatbot works best when questions are focused and directly tied to course topics. It gave fast, readable explanations and useful quiz-style reinforcement, making it practical for final exam preparation. I also noticed that lecture grounding significantly improved relevance and reduced off-topic behavior compared to a prompt-only setup.
 
 The main challenge was ensuring the chatbot was not just fluent, but actually grounded in class materials. Initially, storing files in a folder was not enough; the lecture content had to be explicitly loaded and injected into prompts. Another challenge was balancing context size for a smaller model, since large prompts can reduce answer quality. This required selective loading and concise prompt construction.
