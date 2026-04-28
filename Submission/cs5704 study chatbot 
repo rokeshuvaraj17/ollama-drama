@@ -1,0 +1,58 @@
+Summary of provided feedback on the implemented CS5704 study chatbot
+Based on the interaction logs, the chatbot performed well on core CS5704 software testing topics and generally followed the expected study format (Definition, Example, Key Insight, Quiz Question). For prompts like “what is software testing?”, “Why can testing not prove that software is correct?”, and “What is the difference between black-box and white-box testing?”, the responses were clear, structured, and aligned with lecture-level concepts. The chatbot also handled scope boundaries correctly by rejecting an out-of-topic prompt (“how to train a neural network”) and indicating it was not covered in lecture material. Overall, the feedback suggests the chatbot is effective for exam review, especially for foundational concepts and quick self-quizzing.
+
+Areas for improvement include occasional generic phrasing, repetitive examples, and inconsistent format numbering across some responses. A few answers were conceptually correct but could be better grounded in exact lecture terminology. This indicates that while the chatbot is useful and functional, it can be improved through tighter context selection and more consistent output rules.
+
+Individual reflection: performance, challenges, and key takeaways
+From my perspective, this activity showed that the chatbot works best when questions are focused and directly tied to course topics. It gave fast, readable explanations and useful quiz-style reinforcement, making it practical for final exam preparation. I also noticed that lecture grounding significantly improved relevance and reduced off-topic behavior compared to a prompt-only setup.
+
+The main challenge was ensuring the chatbot was not just fluent, but actually grounded in class materials. Initially, storing files in a folder was not enough; the lecture content had to be explicitly loaded and injected into prompts. Another challenge was balancing context size for a smaller model, since large prompts can reduce answer quality. This required selective loading and concise prompt construction.
+
+
+
+
+
+
+
+
+five tasks
+
+
+1.Essential topics for the chatbot knowledge base
+Our group chose the most exam-relevant CS5704 software testing topics:
+
+    What software testing is and why it matters
+    Why testing is hard (input explosion, non-exhaustive testing)
+    Black-box vs. white-box testing
+    Equivalence class partitioning and boundary value analysis
+    Unit testing and assertions
+    Cyclomatic complexity
+    Coverage metrics (statement, branch, path)
+    Testing levels (unit, integration, validation, system)
+    LLMs for testing: benefits and limitations
+
+2. Corresponding markdown lecture content used
+    
+    We mapped each essential topic to its lecture markdown notes and selected only the sections directly tied to final-exam concepts (definitions, formulas, and examples). The key sections were those covering test design techniques, structural testing/coverage, and testing strategy levels. We used these notes as the source of truth for the chatbot’s behavior and avoided adding unsupported content.
+
+How we loaded lecture material and customized responses
+We used a custom Modelfile with:
+
+a SYSTEM prompt aligned to CS5704 testing concepts,
+explicit response structure (Definition, Example, Key Insight, Quiz Question),
+guardrails like “if unsure, say not covered in lecture,” to reduce hallucinations.
+We created the model with Ollama (ollama create cs5704-tutor -f Modelfile) and connected it to a Python chat script (final.py) that sends user prompts and prints responses in study-friendly format.
+Swap-and-test results with another group
+During chatbot exchange, we asked both direct and tricky questions (definitions, comparison questions, formula-based prompts, and applied scenarios). The chatbot performed best on core concepts and concise explanations. It was weaker on very specific edge-case questions or when a prompt required deeper lecture nuance not explicitly represented in the system guidance.
+
+Reflection: overall performance and improvements
+Overall, the chatbot is useful as a final-exam study companion: clear explanations, examples, and quiz-style reinforcement. Main improvement areas:
+
+Add more lecture-grounded examples for each topic
+Improve handling of ambiguous prompts with clarification questions
+Add lightweight retrieval from curated lecture markdown chunks for higher factual consistency
+Expand quiz generation (difficulty levels + answer checking)
+Add evaluation scripts with expected Q/A sets to measure accuracy before submission
+If you want, I can also turn this into a polished submission-ready paragraph format for your report.
+
+

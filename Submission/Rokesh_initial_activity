@@ -1,0 +1,110 @@
+Here’s the honest version of your reflection, cleaned up and structured properly. I’m not going to sugarcoat it—you made classic mistakes, but that’s actually good material if you explain it correctly.
+
+---
+
+# **Reflection on LLM Development (Bill Parsing System)**
+
+During the development of a bill parsing system using large language models, I encountered multiple challenges across different phases of the software development lifecycle (SDLC). These challenges highlighted the fundamental differences between traditional software systems and AI-enabled systems (Software 2.0).
+
+---
+
+## **Requirements Phase**
+
+Initially, I skipped proper requirement analysis, which led to immediate problems. I started with an online dataset without verifying its completeness. Critical fields such as store name, date, and bill number were either missing or obscured.
+
+This caused ambiguity in defining the task itself—whether the model should extract structured fields, reconstruct missing information, or simply perform OCR.
+
+Only after encountering inconsistent outputs did I revisit the requirements phase and redefine the objective:
+
+* Extract structured information (item name, quantity, price, total, store details)
+* Ensure completeness and reliability of key fields
+
+This highlighted a key issue in AI systems: **poor data understanding leads to undefined system behavior**.
+
+---
+
+## **Design Phase**
+
+The design phase was not clearly separated at the beginning. I initially assumed that using an LLM alone would solve the problem.
+
+Later, I realized the system required a pipeline approach:
+
+* OCR (to extract raw text)
+* LLM (to structure and interpret data)
+* Post-processing (to clean and validate outputs)
+
+The main challenge was deciding how much responsibility to assign to the model versus traditional logic. Unlike Software 1.0, where logic is explicitly coded, here the behavior depends heavily on prompts and data quality.
+
+---
+
+## **Implementation Phase**
+
+During implementation, I attempted to:
+
+* Generate or collect bill datasets using available tools and ARC resources
+* Run OCR models and pass extracted text into an LLM
+* Format outputs into structured JSON
+
+Challenges faced:
+
+* Dataset inconsistency (different bill formats)
+* Model hallucination when fields were missing
+* Difficulty in aligning outputs to a fixed schema
+
+Unlike deterministic code, the same input could produce slightly different outputs, making debugging harder.
+
+---
+
+## **Testing Phase**
+
+Testing was one of the most difficult phases. Traditional unit testing does not apply well because:
+
+* Outputs are not deterministic
+* There is no single “correct” answer
+
+I had to rely on:
+
+* Manual inspection of outputs
+* Comparing extracted fields against expected values
+* Checking completeness and correctness heuristically
+
+A key issue observed was that the model sometimes generated plausible but incorrect values (hallucination), especially when data was missing in the input.
+
+---
+
+## **Deployment Phase**
+
+Deployment introduced practical constraints:
+
+* High memory requirements for running models
+* Need for a system that allows users to interact with the model (API or web interface)
+
+I realized that running large models locally or on limited infrastructure (like ARC or free environments) is not always feasible.
+
+This forced consideration of:
+
+* Lightweight models
+* API-based deployment
+* Efficient resource management
+
+---
+
+## **Maintenance Phase**
+
+Although the system was not fully deployed at scale, anticipated maintenance challenges include:
+
+* Handling new bill formats not seen during training
+* Updating prompts or retraining models as requirements evolve
+* Managing model drift and inconsistencies over time
+
+Unlike traditional systems, maintenance is not just bug fixing—it often involves **data updates and prompt/model adjustments**.
+
+---
+
+## **Key Takeaways**
+
+* Skipping requirement analysis leads to major downstream issues, especially in AI systems
+* Data quality is more critical than model complexity
+* LLM-based systems require iterative refinement rather than one-time implementation
+* Testing and validation are fundamentally harder due to non-deterministic behavior
+* Deployment is constrained by compute and memory limitations
